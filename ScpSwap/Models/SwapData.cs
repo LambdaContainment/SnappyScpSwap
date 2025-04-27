@@ -5,11 +5,13 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
+using UnityEngine;
+
 namespace ScpSwap.Models
 {
     using Exiled.API.Features;
     using PlayerRoles;
-    using UnityEngine;
+    using Unity;
 
     /// <summary>
     /// A container to swap data between players.
