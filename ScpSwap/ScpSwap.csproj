@@ -43,7 +43,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="ExMod.Exiled" Version="9.8.1" />
+    <PackageReference Include="ExMod.Exiled" Version="9.9.2" />
   </ItemGroup>
 
 </Project>

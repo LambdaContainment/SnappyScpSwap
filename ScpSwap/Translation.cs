@@ -86,5 +86,20 @@ namespace ScpSwap
         /// </summary>
         [Description("The various command instances to be translated.")]
         public CommandTranslations CommandTranslations { get; set; } = new CommandTranslations();
+        
+        public string ExecutorIsntPlayer { get; set; } = "Command must be executed in-game.";
+        public string RoundIsntStarted { get; set; } = "The round has not yet started.";
+        public string SwapPeriodEnded { get; set; } = "The swap period has ended.";
+        public string AllowUserSwapByPermission { get; set; } = "You do not have permission to use this command.";
+        public string NotAnScp { get; set; } = "You must be an Scp to use this command.";
+        public string AlreadyHasPendingRequest { get; set; } = "You already have a pending swap request!";
+        public string CannotSwapWithYourself { get; set; } = "You cannot swap with yourself.";
+        public string CannotSwapOffThisScp { get; set; } = "You're not allowed to swap off from this SCP.";
+        public string RequestSent { get; set; } = "Swap request sent!";
+        public string CannotFindRole { get; set; } = "Cannot find the specified role";
+        public string SuccessfulSwap { get; set; } = "Swap successful.";
+        public string CannotFindPlayerWithRole { get; set; } = "Unable to locate a player with the requested role.";
+        public string NoPendingRequest { get; set; } = "You do not have a pending swap request.";
+        public string SwapRequestCancelled { get; set; } = "Swap request cancelled.";
     }
 }

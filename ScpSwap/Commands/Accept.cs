@@ -32,19 +32,19 @@ namespace ScpSwap.Commands
             Player playerSender = Player.Get(sender);
             if (playerSender == null)
             {
-                response = "This command must be from the game level.";
+                response = Plugin.Instance.Translation.ExecutorIsntPlayer;
                 return false;
             }
 
             Swap swap = Swap.FromReceiver(playerSender);
             if (swap == null)
             {
-                response = "You do not have a pending swap request.";
+                response = Plugin.Instance.Translation.NoPendingRequest;
                 return false;
             }
 
             swap.Run();
-            response = "Swap successful!";
+            response = Plugin.Instance.Translation.SuccessfulSwap;
             return true;
         }
     }

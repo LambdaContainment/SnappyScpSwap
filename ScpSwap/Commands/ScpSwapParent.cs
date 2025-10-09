@@ -54,19 +54,19 @@ namespace ScpSwap.Commands
             Player playerSender = Player.Get(sender);
             if (playerSender == null)
             {
-                response = "This command must be executed at the game level.";
+                response = Plugin.Instance.Translation.ExecutorIsntPlayer;
                 return false;
             }
 
             if (!Round.IsStarted)
             {
-                response = "The round has not yet started.";
+                response = Plugin.Instance.Translation.RoundIsntStarted;
                 return false;
             }
 
             if (Round.ElapsedTime.TotalSeconds > Plugin.Instance.Config.SwapTimeout)
             {
-                response = "The swap period has ended.";
+                response = Plugin.Instance.Translation.SwapPeriodEnded;
                 return false;
             }
 
@@ -78,59 +78,59 @@ namespace ScpSwap.Commands
 
             if (Plugin.Instance.Config.AllowUserSwapByPermission)
             {
-                if (!playerSender.CheckPermission(("scpswap.allowed")))
+                if (!playerSender.CheckPermission("scpswap.allowed"))
                 {
-                    response = "You do not have permission to use this command";
+                    response = Plugin.Instance.Translation.AllowUserSwapByPermission;
                     return false;
                 }
             }
 
             if (!playerSender.IsScp && ValidSwaps.GetCustom(playerSender) == null)
             {
-                response = "You must be an Scp to use this command.";
+                response = Plugin.Instance.Translation.NotAnScp;
                 return false;
             }
 
             if (Swap.FromSender(playerSender) != null)
             {
-                response = "You already have a pending swap request!";
+                response = Plugin.Instance.Translation.AlreadyHasPendingRequest;
                 return false;
             }
 
             Player receiver = GetReceiver(arguments.At(0), out Action<Player> spawnMethod);
             if (playerSender == receiver)
             {
-                response = "You can't swap with yourself.";
+                response = Plugin.Instance.Translation.CannotSwapWithYourself;
                 return false;
             }
 
             if (Plugin.Instance.Config.BlacklistedSwapFromScps.Contains(playerSender.Role.Type))
             {
-                response = "You're not allowed to swap off from this SCP.";
+                response = Plugin.Instance.Translation.CannotSwapOffThisScp;
                 return false;
             }
 
             if (receiver != null)
             {
                 Swap.Send(playerSender, receiver);
-                response = "Request sent!";
+                response = Plugin.Instance.Translation.RequestSent;
                 return true;
             }
 
             if (spawnMethod == null)
             {
-                response = "Unable to find the specified role. Please refer to the list command for available roles.";
+                response = Plugin.Instance.Translation.CannotFindRole;
                 return false;
             }
 
             if (Plugin.Instance.Config.AllowNewScps)
             {
                 spawnMethod(playerSender);
-                response = "Swap successful.";
+                response = Plugin.Instance.Translation.SuccessfulSwap;
                 return true;
             }
 
-            response = "Unable to locate a player with the requested role.";
+            response = Plugin.Instance.Translation.CannotFindPlayerWithRole;
             return false;
         }
 
