@@ -67,6 +67,12 @@ namespace ScpSwap
         };
 
         /// <summary>
+        /// Gets or sets a value indicating whether swapping with human players is allowed.
+        /// </summary>
+        [Description("Allows or disallows swapping with human players.")]
+        public bool AllowSwapWithHumans { get; set; } = true;
+
+        /// <summary>
         /// Enables/Disables the SCP Swap plugin based off of permissions. Permission is "scpswap.allowed"
         /// </summary>
         [Description(

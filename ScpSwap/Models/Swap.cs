@@ -11,7 +11,6 @@ namespace ScpSwap.Models
     using Exiled.API.Features;
     using Exiled.Events.EventArgs;
     using Exiled.Events.EventArgs.Player;
-    using MEC;
 
     /// <summary>
     /// Handles the swapping of players.
